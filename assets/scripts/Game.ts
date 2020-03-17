@@ -18,6 +18,9 @@ export default class Game extends cc.Component {
     @property(cc.Label)
     scoreLabel: cc.Label = null
 
+    @property({type: cc.AudioClip})
+    gun = null
+
     @property
     posX: number = 0
 
@@ -44,6 +47,7 @@ export default class Game extends cc.Component {
         }, this)
         let sequence = cc.sequence(actionBy, destruction)
         newBullet.runAction(sequence)
+        cc.audioEngine.playEffect(this.gun, false)
     }
 
     createBad() {
